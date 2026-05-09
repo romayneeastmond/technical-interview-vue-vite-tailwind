@@ -11,6 +11,12 @@ A structured, end-to-end interview preparation system covering every phase of th
 
 ---
 
+## 🌎 Live Demo
+
+Live demo hosted on Vercel [Interview Prep](https://technical-interview-vue-vite-tailwi.vercel.app/#/).
+
+---
+
 ## ✨ Features
 
 - **4 Interview Modules** — Recruiter Screen, Hiring Manager, Technical Loop, and Offer & Negotiation
@@ -87,3 +93,7 @@ This project is open-source and available under the **MIT License**. Feel free t
 
 ---
 *Created for portfolio demonstration purposes.*
+
+## 📈 Screenshots
+
+<img alt="Image" src="https://github.com/user-attachments/assets/3e000191-4f65-4b61-b731-bf058d5b1cf0" />
