@@ -92,7 +92,7 @@
 			</div>
 
 			<!-- Questions to Ask HM -->
-			<div class="card animate-fade-up anim-d5">
+			<div class="card animate-fade-up anim-d5" style="margin-bottom: 1.5rem;">
 				<h3 style="font-size: 1.3rem; margin-bottom: 0.375rem;">Questions to Ask the Hiring Manager</h3>
 				<p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem;">These show strategic thinking and genuine engagement. Pick 3–4.</p>
 				<div class="hm-questions">
@@ -102,6 +102,29 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- GRC Custom Requirements Card -->
+			<router-link to="/grc-frameworks" class="grc-card animate-fade-up anim-d6">
+				<div class="grc-card-left">
+					<div class="grc-eyebrow">Role-Specific Preparation</div>
+					<h3 class="grc-title">Some interviews have custom requirements</h3>
+					<p class="grc-desc">For specialized roles — like Engineering Manager at a GRC company — the standard behavioral playbook isn't enough. Directors will probe your fluency in regulatory frameworks, risk governance, and compliance-aware leadership. This guide covers what they're looking for.</p>
+					<div class="grc-link-label">
+						<span>Explore GRC &amp; Leadership Frameworks</span>
+						<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+							<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</div>
+				</div>
+				<div class="grc-card-right">
+					<div class="grc-framework-list">
+						<div class="grc-fw-item" v-for="fw in grcPreview" :key="fw.name">
+							<span class="grc-fw-tag" :class="fw.color">{{ fw.tag }}</span>
+							<span class="grc-fw-name">{{ fw.name }}</span>
+						</div>
+					</div>
+				</div>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -143,6 +166,14 @@ const allQuestions = [
 const filteredQuestions = computed(() =>
 	allQuestions.filter(q => q.cat === activeCategory.value)
 )
+
+const grcPreview = [
+	{ tag: 'Risk', name: 'NIST AI RMF', color: 'tag-gold' },
+	{ tag: 'People', name: 'Psychological Safety', color: 'tag-green' },
+	{ tag: 'Metrics', name: 'OKRs + DORA', color: 'tag-blue' },
+	{ tag: 'Change', name: 'ADKAR Model', color: 'tag-blue' },
+	{ tag: 'Decision', name: 'OODA Loop', color: 'tag-muted' },
+]
 
 const hmQuestions = [
 	{ q: 'What does the team\'s biggest challenge look like today, and how would this role help?', why: 'Shows you\'re thinking about impact, not just getting the job.' },
@@ -286,6 +317,127 @@ const hmQuestions = [
 	color: var(--muted);
 }
 
+/* GRC Card */
+.grc-card {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 2rem;
+	align-items: center;
+	background: var(--navy);
+	border-radius: var(--radius-md);
+	padding: 2rem 2.25rem;
+	text-decoration: none;
+	position: relative;
+	overflow: hidden;
+	transition: box-shadow 0.25s, transform 0.25s;
+	margin-bottom: 3rem;
+}
+
+.grc-card::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(ellipse at 80% 50%, rgba(200, 151, 63, 0.12) 0%, transparent 70%);
+	pointer-events: none;
+}
+
+.grc-card:hover {
+	box-shadow: var(--shadow-gold);
+	transform: translateY(-2px);
+}
+
+.grc-eyebrow {
+	font-size: 0.65rem;
+	font-weight: 600;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--gold);
+	margin-bottom: 0.625rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.grc-eyebrow::before {
+	content: '';
+	display: inline-block;
+	width: 1.25rem;
+	height: 1px;
+	background: var(--gold);
+}
+
+.grc-title {
+	font-family: var(--font-display);
+	font-size: 1.45rem;
+	font-weight: 500;
+	color: var(--white);
+	margin-bottom: 0.75rem;
+	line-height: 1.25;
+}
+
+.grc-desc {
+	font-size: 0.875rem;
+	color: rgba(255, 255, 255, 0.55);
+	line-height: 1.7;
+	max-width: 52ch;
+	margin-bottom: 1.25rem;
+}
+
+.grc-link-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--gold-light);
+	transition: gap 0.2s;
+}
+
+.grc-card:hover .grc-link-label {
+	gap: 0.75rem;
+}
+
+.grc-card-right {
+	flex-shrink: 0;
+}
+
+.grc-framework-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem;
+	min-width: 200px;
+}
+
+.grc-fw-item {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--radius-md);
+	padding: 0.5rem 0.875rem;
+}
+
+.grc-fw-tag {
+	font-size: 0.6rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 0.2rem 0.5rem;
+	border-radius: 100px;
+}
+
+.tag-gold { background: rgba(200, 151, 63, 0.2); color: var(--gold-light); }
+.tag-green { background: rgba(10, 92, 54, 0.3); color: #6fcfa0; }
+.tag-blue { background: rgba(27, 63, 139, 0.3); color: #90b0f0; }
+.tag-muted { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); }
+
+.grc-fw-name {
+	font-size: 0.85rem;
+	color: rgba(255, 255, 255, 0.7);
+	font-weight: 500;
+}
+
 @media (max-width: 900px) {
 	.story-grid {
 		grid-template-columns: repeat(2, 1fr);
@@ -293,6 +445,14 @@ const hmQuestions = [
 
 	.flags-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.grc-card {
+		grid-template-columns: 1fr;
+	}
+
+	.grc-card-right {
+		display: none;
 	}
 }
 </style>

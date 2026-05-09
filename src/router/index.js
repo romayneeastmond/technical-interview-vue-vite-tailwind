@@ -5,6 +5,7 @@ import Screening from '../views/Screening.vue'
 import HiringManager from '../views/HiringManager.vue'
 import Coding from '../views/Coding.vue'
 import Negotiation from '../views/Negotiation.vue'
+import GrcFrameworks from '../views/GrcFrameworks.vue'
 
 const routes = [
 	{ path: '/', component: Home },
@@ -13,6 +14,7 @@ const routes = [
 	{ path: '/hiring-manager', component: HiringManager },
 	{ path: '/coding', component: Coding },
 	{ path: '/negotiation', component: Negotiation },
+	{ path: '/grc-frameworks', component: GrcFrameworks },
 ]
 
 export default createRouter({
