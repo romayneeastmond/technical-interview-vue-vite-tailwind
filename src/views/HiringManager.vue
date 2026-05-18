@@ -104,7 +104,7 @@
 			</div>
 
 			<!-- GRC Custom Requirements Card -->
-			<router-link to="/grc-frameworks" class="grc-card animate-fade-up anim-d6">
+			<router-link to="/grc-frameworks" class="grc-card animate-fade-up anim-d6 hidden">
 				<div class="grc-card-left">
 					<div class="grc-eyebrow">Role-Specific Preparation</div>
 					<h3 class="grc-title">Some interviews have custom requirements</h3>
