@@ -461,7 +461,9 @@ a {
 	line-height: 1.6;
 }
 
-.hidden { display: none; }
+.hidden {
+	display: none !important;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
